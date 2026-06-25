@@ -11,33 +11,42 @@
       min-height: 100vh;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      color: #fff;
+      color: #2b2b2b;
       text-align: center;
-      padding: 2rem;
+      overflow: hidden;
+    }
+    .scene {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
     }
     .card {
       max-width: 540px;
-      animation: rise 0.8s ease-out;
+      padding: 2rem;
+      animation: rise 1s ease-out;
     }
     h1 {
       font-size: clamp(2.5rem, 8vw, 4.5rem);
       line-height: 1.05;
       margin-bottom: 1rem;
-      background: linear-gradient(90deg, #fff, #8ec5ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #3a2a1a;
+      text-shadow: 0 2px 12px rgba(255,255,255,0.5);
     }
-    p { font-size: 1.2rem; opacity: 0.85; line-height: 1.6; }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #4a3526;
+      text-shadow: 0 1px 8px rgba(255,255,255,0.5);
+    }
     .badge {
       display: inline-block;
       margin-top: 2rem;
       padding: 0.5rem 1.1rem;
-      border: 1px solid rgba(255,255,255,0.25);
+      border: 1px solid rgba(60,40,20,0.25);
       border-radius: 999px;
       font-size: 0.85rem;
-      opacity: 0.7;
+      color: #4a3526;
+      background: rgba(255,255,255,0.25);
     }
     @keyframes rise {
       from { opacity: 0; transform: translateY(20px); }
@@ -46,9 +55,53 @@
   </style>
 </head>
 <body>
+  <svg class="scene" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#fbd1a2" />
+        <stop offset="35%" stop-color="#f9a36b" />
+        <stop offset="65%" stop-color="#f4794f" />
+        <stop offset="100%" stop-color="#c9543e" />
+      </linearGradient>
+      <radialGradient id="glow" cx="50%" cy="78%" r="55%">
+        <stop offset="0%" stop-color="#fff6d6" stop-opacity="0.95" />
+        <stop offset="45%" stop-color="#ffd27f" stop-opacity="0.45" />
+        <stop offset="100%" stop-color="#ffd27f" stop-opacity="0" />
+      </radialGradient>
+      <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#e8804f" />
+        <stop offset="100%" stop-color="#7a3b52" />
+      </linearGradient>
+    </defs>
+
+    <!-- sky -->
+    <rect width="800" height="430" fill="url(#sky)" />
+    <!-- sun glow -->
+    <rect width="800" height="430" fill="url(#glow)" />
+    <!-- sun -->
+    <circle cx="400" cy="430" r="70" fill="#fff2c4" />
+    <circle cx="400" cy="430" r="58" fill="#ffe08a" />
+
+    <!-- distant hills -->
+    <path d="M0 410 Q150 360 320 405 T800 395 V430 H0 Z" fill="#b65741" opacity="0.55" />
+    <path d="M0 425 Q220 385 460 420 T800 415 V430 H0 Z" fill="#9c4836" opacity="0.55" />
+
+    <!-- sea -->
+    <rect y="430" width="800" height="170" fill="url(#sea)" />
+    <!-- sun reflection -->
+    <ellipse cx="400" cy="470" rx="60" ry="10" fill="#ffe08a" opacity="0.7" />
+    <ellipse cx="400" cy="500" rx="90" ry="9"  fill="#ffd27f" opacity="0.45" />
+    <ellipse cx="400" cy="530" rx="120" ry="8" fill="#ffd27f" opacity="0.3" />
+
+    <!-- birds -->
+    <path d="M150 120 q12 -10 24 0 q12 -10 24 0" fill="none" stroke="#5a3526" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+    <path d="M210 95 q9 -8 18 0 q9 -8 18 0" fill="none" stroke="#5a3526" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M610 140 q10 -9 20 0 q10 -9 20 0" fill="none" stroke="#5a3526" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  </svg>
+
   <div class="card">
     <h1>It's live!</h1>
-    <p>This is my first website on the internet. More coming soon.</p>
+    <p>Good morning. This is my first website on the internet.</p>
     <span class="badge">Built with Cowork ✦ Published by me</span>
   </div>
 </body>
